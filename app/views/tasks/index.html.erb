@@ -3,7 +3,9 @@
 <ul>
   <% @tasks.each do |task| %>
   <% done = task.done ? '[X]' : '[ ]' %>
-  <li><%= task.description %> - <%= done %></li>
+  <li><%= link_to task.description, task_path(task.id) %> -
+    <%= link_to done, task_path(task, task: {done: true}), method: :patch %>
+  </li>
   <% end %>
 </ul>
 
